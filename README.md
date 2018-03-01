@@ -1,7 +1,7 @@
 # Tarea 05. Ciclos.
 
 
-Consulta el documento anexo Tarea-04.pdf para ver los detalles.
+Consulta el documento anexo Tarea-05.pdf para ver los detalles.
 
 
 1. Clona el proyecto desde PyCharm.
