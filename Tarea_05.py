@@ -9,6 +9,7 @@
 import pygame
 import random
 import getpass
+from math import *
 user = getpass.getuser()
 # Dimensiones de la pantalla
 ANCHO = 800
@@ -69,6 +70,14 @@ def dibujarArco(ventana):
             y = -x + ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x+ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
 
+def dibujarCirculos(ventana):
+    for numero in range(1, 361, 30):
+        rad = int(radians(numero))
+        pygame.draw.circle(ventana, NEGRO, (ANCHO//2, ALTO//2), 150, 1)
+
+def dibujarEspiral():
+    pass
+
 # Estructura básica de un programa que usa pygame para dibujar
 
 def dibujar(opcion):
@@ -95,9 +104,9 @@ def dibujar(opcion):
         elif opcion == 2:
             dibujarArco(ventana)
         elif opcion == 3:
-            pass
+            dibujarEspiral()
         elif opcion == 4:
-            pass
+            dibujarCirculos(ventana)
 
 
         #dibujarArco(ventana)
@@ -125,7 +134,9 @@ def main():
         if opcion >= 1 and opcion <=4:
             dibujar(opcion)
         elif opcion == 5:
-            lentoDeAMadres = int(input('Aproximación de PI.\nTeclea el valor del divisor.\n(Mientras más grande sea, más se va a tardar): '))
+            lentoDeAMadres = int(input('Aproximación de PI.\n'
+                                       'Teclea el valor del divisor.\n'
+                                       '(Mientras más grande sea, más se va a tardar): '))
             print(aproximarPI(lentoDeAMadres))
         elif opcion == 6:
             encontrarDiv()
