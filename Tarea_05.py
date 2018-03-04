@@ -9,7 +9,7 @@
 import pygame
 import random
 import getpass
-from math import *
+import math
 user = getpass.getuser()
 # Dimensiones de la pantalla
 ANCHO = 800
@@ -46,7 +46,7 @@ def aproximarPI(divisor):
     for numero in range(1, divisor):
         aproximado = 1/(numero**4)
         acumulador+= aproximado
-    pi = (acumulador+90)**(1/4)
+    pi = (acumulador*90)**(1/4)
     return '\n-La aproximación de PI con %d valores es: %f\n' % (divisor, pi)
 
 def drawCircleANDRect(ventana):
@@ -57,23 +57,28 @@ def drawCircleANDRect(ventana):
 
 def dibujarArco(ventana):
     colorAzar = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-    for x in range(ANCHO//2, ANCHO, 10):
+    for x in range(ANCHO//2, ANCHO+1, 10):
             y = x - ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x-ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
-    for x in range(ANCHO//2, ANCHO, 10):
+    for x in range(ANCHO//2, ANCHO+1, 10):
             y = -x + ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x-ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
-    for x in range(0, ANCHO//2, 10):
+    for x in range(0, ANCHO//2+1, 10):
             y = x - ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x+ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
-    for x in range(0, ANCHO//2, 10):
+    for x in range(0, ANCHO//2+1, 10):
             y = -x + ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x+ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
 
 def dibujarCirculos(ventana):
-    for numero in range(1, 361, 30):
-        rad = int(radians(numero))
-        pygame.draw.circle(ventana, NEGRO, (ANCHO//2, ALTO//2), 150, 1)
+    for numero in range(1, 14):
+        angulo = (math.pi/6)*numero
+        y = int(math.sin(angulo)*150)
+        x = int(math.cos(angulo)*150)
+        x += 400
+        y +=400
+        pygame.draw.circle(ventana, NEGRO, (x, y), 150, 1)
+
 
 def dibujarEspiral():
     pass
