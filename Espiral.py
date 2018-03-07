@@ -1,6 +1,5 @@
 #Autor Karla Fabiola Ramirez Martinez
-#Descripcion; Dibuja una espiral cuadrada
-
+#Descripcion; Dibuja varias figuras
 
 #Importamos las librerias necesarias
 import pygame
