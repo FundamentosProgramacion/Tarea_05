@@ -14,5 +14,4 @@ def piramides():
         print('%d * 8 + %d = %d'% (acumulador2, numero, total2))
         acumulador2 *= 10
 
-
 piramides()

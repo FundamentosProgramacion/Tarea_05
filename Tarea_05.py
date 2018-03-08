@@ -19,15 +19,24 @@ BLANCO = (255, 255, 255)  # R,G,B en el rango [0,255]
 VERDE_BANDERA = (0, 122, 0)
 ROJO = (255, 0, 0)
 NEGRO = (0, 0, 0)
+AZUL = (0, 0, 255)
 
-def encontrarDiv():
+def piramide2(numero, acumulador):
+    total = acumulador * 8 + numero
+    return '%d * 8 + %d = %d' % (acumulador, numero, total)
+
+def piramide1(x):
+    total = x**2
+    return ('%d * %d = %d' % (x, x, total))
+
+def encontrarDiv():                   #encuentra los divisores de 17 en un rango de 1000 a 9999 (solo los numeros de 4 digitos)
     contador = 0
     for numero in range(1000, 10000):
         if numero % 17 ==0:
             contador+= 1
     return contador
-
-def calcularPiramides():
+'''
+def calcularPiramides():        #imprime una serie de pirámides
     acumulador = 1
     acumulador2 = 0
     for numero in range(1, 10):
@@ -40,8 +49,8 @@ def calcularPiramides():
         total2 = acumulador2 * 8 + numero
         print('%d * 8 + %d = %d'% (acumulador2, numero, total2))
         acumulador2 *= 10
-
-def aproximarPI(divisor):
+'''
+def aproximarPI(divisor):       # aproxima PI con los calores integrados
     acumulador = 0
     for numero in range(1, divisor):
         aproximado = 1/(numero**4)
@@ -49,13 +58,13 @@ def aproximarPI(divisor):
     pi = (acumulador*90)**(1/4)
     return '\n-La aproximación de PI con %d valores es: %f\n' % (divisor, pi)
 
-def drawCircleANDRect(ventana):
+def drawCircleANDRect(ventana):     # dibuja una serie de circulos y cuadrados entrelazados
     for numero in range(1, ANCHO//2, 10):
         pygame.draw.circle(ventana, NEGRO, (ANCHO//2, ALTO//2), (numero), 1)
     for numero in range(1, ANCHO, 10):
         pygame.draw.rect(ventana, NEGRO, (numero, numero, ANCHO-2 * numero, ALTO-2 * numero), 1)
 
-def dibujarArco(ventana):
+def dibujarArco(ventana):       # dibuja unas parabolas que cambian de color 40 veces por segundo
     colorAzar = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
     for x in range(ANCHO//2, ANCHO+1, 10):
             y = x - ANCHO//2
@@ -70,7 +79,7 @@ def dibujarArco(ventana):
             y = -x + ANCHO//2
             pygame.draw.line(ventana, colorAzar, (x+ANCHO//2, ALTO//2), (ANCHO//2, y+ALTO//2), 1)
 
-def dibujarCirculos(ventana):
+def dibujarCirculos(ventana):  #dibuja la flor de circulos en la ventana
     for numero in range(1, 14):
         angulo = (math.pi/6)*numero
         y = int(math.sin(angulo)*150)
@@ -80,8 +89,15 @@ def dibujarCirculos(ventana):
         pygame.draw.circle(ventana, NEGRO, (x, y), 150, 1)
 
 
-def dibujarEspiral():
-    pass
+def dibujarEspiral(ventana):            # dibuja una espiral en la pantalla
+    for numero in range(0, ANCHO//2, 10):       #lado inferior
+        pygame.draw.line(ventana, NEGRO, (ANCHO + 3 - numero, ALTO - numero), (0+numero , ALTO -numero), 1)
+    for numero in range(0, ANCHO//2, 10):        # lado superior
+        pygame.draw.line(ventana, NEGRO, (0+numero, 3+numero), (ANCHO - 6 - numero, 3 + numero), 1)
+    for numero in range(0, ALTO//2, 10):        # lado izquierdo
+        pygame.draw.line(ventana, NEGRO, (0 + numero, ALTO - numero), (0+ numero, 3 + numero), 1)
+    for numero in range(0, ALTO//2, 10):        # lado derecho
+        pygame.draw.line(ventana, NEGRO, (ALTO - 6 - numero, 3 + numero), (ALTO - 6 - numero, ALTO - 10 - numero))
 
 # Estructura básica de un programa que usa pygame para dibujar
 
@@ -109,7 +125,7 @@ def dibujar(opcion):
         elif opcion == 2:
             dibujarArco(ventana)
         elif opcion == 3:
-            dibujarEspiral()
+            dibujarEspiral(ventana)
         elif opcion == 4:
             dibujarCirculos(ventana)
 
@@ -146,7 +162,17 @@ def main():
         elif opcion == 6:
             encontrarDiv()
         elif opcion == 7:
-            print(calcularPiramides())
+            acumulador = 0
+            acumulador2 = 0
+            for numero in range(1, 10):
+                acumulador2 *= 10
+                acumulador2 += numero
+                print(piramide2(numero, acumulador2))
+            print('\n')
+            for numero in range(9):
+                acumulador *= 10
+                acumulador += 1
+                print(piramide1(acumulador))
         print('Bienvenido/a %s.' % user)
         print('Menu:\n'
               '1. Dibujar cuadros y círculos\n'
@@ -159,7 +185,7 @@ def main():
               '0. Salir\n')
         opcion = int(input('Que deseas ejecutar? '))
     else:
-        pass
+        print('Apagando...\n\nAdios %s.'%user)
 
 
 
