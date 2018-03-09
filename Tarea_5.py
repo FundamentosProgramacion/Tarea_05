@@ -195,7 +195,7 @@ def imprimirPiramides():
 
 
 def main():
-    print("Tarea 5. Seleccione qué quiere hacer. \n1. Usar Pygame \n2. Aproximar PI \n3. Contar divisibles entre 17 \n4. Imprimir pirámides de números \n0. Salir \n¿Qué desea hacer?")
+    print("Tarea 5. Seleccione qué quiere hacer. \n1. Usar Pygame \n2. Aproximar PI \n3. Contar números de 4 dígitos divisibles entre 17 \n4. Imprimir pirámides de números \n0. Salir \n¿Qué desea hacer?")
     funcion = int(input("Eleccion: "))
     if funcion != 0:
         if funcion == 1:
