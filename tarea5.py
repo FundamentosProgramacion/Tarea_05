@@ -126,7 +126,7 @@ def piramides():
     for x in range (1,10):
         p1 = x+p1*10
         m1 = p1*mp1+x
-        print(p1, "*", mp1, "=", m1)
+        print(p1, "*", mp1, "+",x, "=", m1)
     print ("""
         """)
     for uno in range(9):
