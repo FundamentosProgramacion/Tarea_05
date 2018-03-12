@@ -80,17 +80,11 @@ def contarDivisibles17():
 
 
 def imprimirPiramides():
-    numeroo = 1
-    for i in range(1, 10):
-        resultado = (numeroo * 8) + i
-        print(numeroo, "* 8 +", i, "=", resultado)
-        numeroo = (numeroo * 10) + (i + 1)
-    print("")
-    numeroo = 1
-    for i in range(1, 10):
-        resultado = numeroo * numeroo
-        print(numeroo, "*", numeroo, "=", resultado)
-        numeroo = (numeroo * 10) + 1
+   numeroMultiplica = 0
+for x in range(1, 10):
+    numeroMultiplica = (numeroMultiplica*10+x)
+    total= (numeroMultiplica*8)+x
+    print(numeroMultiplica,"*8 +",x,"=",total)
 
 
 
