@@ -64,19 +64,19 @@ def dibujarCirculos(ventana):
 
 
 def aproximarPI(numAprox):
-    piCuad = 0
+    frac = 0
     for i in range(1, numAprox + 1):
-        piCuad += (1 / (i ** 4))
-    pi = sqrt((piCuad * 90))
+        frac += (1 / (i ** 4))
+    pi = sqrt((frac* 90))
     return pi
 
 def contarDivisibles17():
-    numerosD = 0
-    for i in range(1000, 9999):
+    numDivisible = 0
+    for i in range(1, 9999):
         resultado = i % 17
         if resultado == 0:
-            numerosD += 1
-    return numerosD
+            numDivisible += 1
+    return numDivisible
 
 
 def imprimirPiramides():
