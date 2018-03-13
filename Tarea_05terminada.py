@@ -79,7 +79,7 @@ def contarDivisibles17():
             numDivisible += 1
     return numDivisible
 
-
+#imprime las pirámides
 def imprimirPiramides():
  numeroMultiplica = 0
  for x in range(1, 10):
